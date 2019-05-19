@@ -16,6 +16,7 @@
 #include <ostream>
 #include <fstream>
 #include <sstream>
+#include <armadillo>
 
 using namespace std;
 
@@ -122,6 +123,14 @@ public:
     auto data() const noexcept
     {
         return nData;
+    }
+    
+    //for MLpack interface
+    arma::mat armaData() const
+    {
+        arma::mat armaDat = arma::mat(nData.data(), nData.rows(), nData.cols(),
+                                       false, false);
+        return armaDat;
     }
     
     void setData(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> newData)
