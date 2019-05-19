@@ -3,7 +3,7 @@
 #include <iostream>
 #include <functional>
 #include <Eigen/Core>
-#include "DataFrame.h"
+#include "../include/DataFrame.h"
 using namespace std;
 
 int main()
