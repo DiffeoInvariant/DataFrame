@@ -16,7 +16,6 @@
 #include <ostream>
 #include <fstream>
 #include <sstream>
-#include <armadillo>
 
 using namespace std;
 
@@ -123,14 +122,6 @@ public:
     auto data() const noexcept
     {
         return nData;
-    }
-    
-    //for MLpack interface
-    arma::mat armaData() const
-    {
-        arma::mat armaDat = arma::mat(nData.data(), nData.rows(), nData.cols(),
-                                       false, false);
-        return armaDat;
     }
     
     void setData(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> newData)
@@ -327,7 +318,7 @@ public:
                 rowSize *= 1.5;
                 dataMatrix.conservativeResize(rowSize, colSize);
             }
-            if(not first)
+            if(!first)
             {
                 for(j=0; j < colSize; j++){
                     dataMatrix(i,j) = stod(row[j]);
